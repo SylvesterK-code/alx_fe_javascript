@@ -10,59 +10,71 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="1-style.css">
 
-  <!-- Important for accessibility on older browsers -->
+  <!-- Accessibility and compatibility meta -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
   <!-- Skip link for keyboard users -->
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Page Header -->
   <header>
     <h1>Dynamic Quote Generator</h1>
-    <p class="lede">Create, save, import and export quotes — persists with Local Storage.</p>
+    <p class="lede">Create, save, import, and export quotes — persists with Local Storage.</p>
   </header>
 
+  <!-- Main content area -->
   <main id="main" tabindex="-1">
-    <!-- Quote display container: aria-live so screen readers are notified of changes -->
+    <!-- ===============================
+         Quote Display Section
+         =============================== -->
     <section aria-labelledby="quote-heading" class="quote-section">
       <h2 id="quote-heading" class="visually-hidden">Current Quote</h2>
       <div id="quoteDisplay" aria-live="polite" aria-atomic="true"></div>
+
       <div class="controls">
-        <button id="newQuote" type="button" aria-label="Show a new random quote">Show New Quote</button>
+        <button id="newQuote" type="button" aria-label="Show a new random quote">
+          Show New Quote
+        </button>
       </div>
     </section>
 
-    <!-- Add Quote Form -->
+    <!-- ===============================
+         Add New Quote Section
+         =============================== -->
     <section aria-labelledby="add-heading" class="form-section">
       <h2 id="add-heading">Add a New Quote</h2>
 
-      <!-- We use a real form for semantics and accessibility -->
       <form id="addQuoteForm" class="form-container" onsubmit="return false;" aria-describedby="form-help">
-        <div>
+        <div class="input-group">
           <label for="newQuoteText">Quote text</label>
-          <input id="newQuoteText" name="quoteText" type="text" inputmode="text" placeholder="Enter a new quote" required aria-required="true">
+          <input id="newQuoteText" name="quoteText" type="text" placeholder="Enter a new quote" required aria-required="true">
         </div>
 
-        <!-- <br> -->
-        <div>
-          <label for="newQuoteCategory">  Category &nbsp;</label>
+        <div class="input-group">
+          <label for="newQuoteCategory">Category</label>
           <input id="newQuoteCategory" name="quoteCategory" type="text" placeholder="Enter quote category" required aria-required="true">
         </div>
 
         <div class="form-actions">
           <button id="addQuote" type="button">Add Quote</button>
           <button id="exportQuotes" type="button">Export JSON</button>
-          <label for="importFile" class="file-label">Import JSON
+          <label for="importFile" class="file-label">
+            Import JSON
             <input id="importFile" type="file" accept="application/json,.json" aria-label="Import quotes from JSON file">
           </label>
         </div>
 
-        <small id="form-help" class="form-help">You can export your quotes to a JSON file or import one back.</small>
+        <small id="form-help" class="form-help">
+          You can export your quotes to a JSON file or import one back.
+        </small>
       </form>
     </section>
   </main>
 
-  <!-- Custom confirmation modal -->
+  <!-- ===============================
+       Custom Confirmation Modal
+       =============================== -->
   <div id="confirmationModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalMessage">
     <div class="modal-content">
       <p id="modalMessage" tabindex="0"></p>
@@ -72,10 +84,12 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>Built for ALX FE — DOM, Web Storage & JSON</p>
   </footer>
 
+  <!-- External JS -->
   <script src="1-script.js" defer></script>
 </body>
 </html>

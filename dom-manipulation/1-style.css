@@ -1,11 +1,6 @@
 /* ===============================
-   Reset-ish & Accessibility Helpers
+   Reset & Accessibility Helpers
    =============================== */
-/* :focus {
-  outline: 3px solid #0056b3;
-  outline-offset: 2px;
-} */
-
 .visually-hidden {
   position: absolute !important;
   height: 1px;
@@ -35,20 +30,23 @@
 }
 
 /* ===============================
-   General Page Styling
+   General Layout & Typography
    =============================== */
 body {
   font-family: Arial, sans-serif;
   background: #f5f7fb;
   color: #222;
-  line-height: 1.4;
+  line-height: 1.6;
   margin: 0;
-  min-height: 100vh; /* ✅ allows content taller than viewport */
+  min-height: 100vh;
+
+  /* Center all page content */
   /* display: flex; */
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* ✅ so header stays on top, not centered vertically */
-  padding: 1.5rem;
+  justify-content: flex-start;
+
+  padding: 2rem;
   text-align: center;
 }
 
@@ -61,30 +59,42 @@ footer {
 .lede {
   margin-top: 0;
   color: #444;
+  font-size: 1.05rem;
 }
 
 /* ===============================
-   Quote Display Styling
+   Quote Display Section
    =============================== */
 .quote-section {
   max-width: 720px;
-  margin: 0 auto 1rem;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #quoteDisplay {
-  margin: 12px auto;
+  margin: 1rem auto;
   padding: 20px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   width: 100%;
-  min-height: 84px;
+  min-height: 90px;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
 }
 
+.controls {
+  margin-top: 1rem;
+}
+
+/* ===============================
+   Quote Text & Category
+   =============================== */
 .quote-category {
   font-size: 0.9rem;
   color: #666;
@@ -92,7 +102,7 @@ footer {
 }
 
 /* ===============================
-   Form Styling
+   Add Quote Form
    =============================== */
 .form-section {
   max-width: 720px;
@@ -100,51 +110,63 @@ footer {
 }
 
 .form-container {
-  display: block;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
 }
 
-.form-container div {
-  margin: 10px;
+.input-group {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-
-.form-container label {
-  flex-basis: 100%;
+.input-group label {
   font-weight: 600;
-  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
 }
 
-.form-container input[type="text"] {
-  padding: 8px;
+.input-group input[type="text"] {
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ccd;
   border-radius: 6px;
-  width: calc(50% - 8px);
+  font-size: 1rem;
 }
 
 .form-actions {
-  margin-top: 8px;
   display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.form-help {
+  color: #666;
+  font-size: 0.85rem;
 }
 
 /* ===============================
-   Buttons
+   Buttons & File Input
    =============================== */
 button,
 .file-label {
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
   background: #007bff;
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover,
+.file-label:hover {
+  background: #0056b3;
 }
 
 button[disabled],
@@ -181,6 +203,7 @@ button[disabled],
   width: 90%;
   max-width: 420px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .modal-actions {
@@ -198,10 +221,22 @@ footer {
 }
 
 /* ===============================
-   Responsive
+   Responsive Adjustments
    =============================== */
 @media (max-width: 520px) {
-  .form-container input[type="text"] {
+  body {
+    padding: 1rem;
+  }
+
+  #quoteDisplay {
+    font-size: 0.95rem;
+  }
+
+  .input-group input[type="text"] {
     width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
   }
 }

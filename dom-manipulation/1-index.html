@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dynamic Quote Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Dynamic Quote Generator</h1>
+
+  <!-- Quote display area -->
+  <div id="quoteDisplay"></div>
+  <button id="newQuote">Show New Quote</button>
+
+  <h2>Add a New Quote</h2>
+  <div class="form-container">
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote">
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category">
+    <button id="addQuote">Add Quote</button>
+  </div>
+
+  <!-- Custom confirmation modal -->
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+      <p id="modalMessage"></p>
+      <button id="closeModal">OK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

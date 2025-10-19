@@ -21,13 +21,13 @@ const closeModalBtn = document.getElementById("closeModal");
 // Utility Modal System
 // ====================
 
-// Show custom confirmation modal
+// Function to show custom confirmation modal
 function showModal(message) {
   modalMessage.textContent = message;
   modal.style.display = "block";
 }
 
-// Close the modal when OK button is clicked
+// Close the modal when the OK button is clicked
 closeModalBtn.addEventListener("click", () => {
   modal.style.display = "none";
 });
@@ -36,18 +36,21 @@ closeModalBtn.addEventListener("click", () => {
 // Quote Functionality
 // ====================
 
-// Display a random quote
+// Function to display a random quote
 function showRandomQuote() {
   if (quotes.length === 0) {
     quoteDisplay.innerHTML = "<p>No quotes available. Please add one!</p>";
     return;
   }
 
+  // Select a random quote index
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const { text, category } = quotes[randomIndex];
 
-  quoteDisplay.innerHTML = ""; // Clear previous content
+  // Clear previous content
+  quoteDisplay.innerHTML = "";
 
+  // Create and populate new DOM elements
   const quoteText = document.createElement("p");
   quoteText.textContent = `"${text}"`;
 
@@ -55,11 +58,12 @@ function showRandomQuote() {
   quoteCategory.classList.add("quote-category");
   quoteCategory.textContent = `— Category: ${category}`;
 
+  // Append new elements to the quote display container
   quoteDisplay.appendChild(quoteText);
   quoteDisplay.appendChild(quoteCategory);
 }
 
-// Add a new quote dynamically
+// Function to add a new quote dynamically
 function addQuote() {
   const textInput = document.getElementById("newQuoteText");
   const categoryInput = document.getElementById("newQuoteCategory");
@@ -67,29 +71,24 @@ function addQuote() {
   const newText = textInput.value.trim();
   const newCategory = categoryInput.value.trim();
 
+  // Validate input fields
   if (newText === "" || newCategory === "") {
-    showModal("⚠️ Please enter both a quote and a category.");
+    showModal("Please enter both a quote and a category.");
     return;
   }
 
+  // Add the new quote object to the array
   quotes.push({ text: newText, category: newCategory });
 
+  // Clear the input fields after adding
   textInput.value = "";
   categoryInput.value = "";
 
+  // Show success message using custom modal
   showModal("✅ Quote added successfully!");
+
+  // Display the newly added quote
   showRandomQuote();
-}
-
-// =============================
-// Required by Checker (Wrapper)
-// =============================
-
-// Function expected by ALX checker
-function createAddQuoteForm() {
-  // This function already exists as static HTML in your code.
-  // To satisfy the checker, we’ll just log confirmation.
-  console.log("Add Quote form is already rendered in HTML.");
 }
 
 // ====================
@@ -97,7 +96,4 @@ function createAddQuoteForm() {
 // ====================
 newQuoteBtn.addEventListener("click", showRandomQuote);
 addQuoteBtn.addEventListener("click", addQuote);
-document.addEventListener("DOMContentLoaded", () => {
-  showRandomQuote();
-  createAddQuoteForm(); // call to satisfy the checker
-});
+document.addEventListener("DOMContentLoaded", showRandomQuote);
